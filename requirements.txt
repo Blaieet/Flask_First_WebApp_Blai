@@ -3,3 +3,5 @@ Flask-Script
 WTForms
 Flask-PyMongo
 dnspython
+Flask-Login
+gunicorn
