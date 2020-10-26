@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 
 app.config['MONGO_DBNAME'] = 'FlaskWebApp'
-app.config['MONGO_URI'] = 'mongodb+srv://dbUser:ubstyle@clusterblai.olevp.azure.mongodb.net/FlaskWebApp?retryWrites=true&w=majority'
+app.config['MONGO_URI'] = 'mongodb+srv://dbUser:ubstyle@clusterblai.olevp.azure.mongodb.net/FlaskWebApp?retryWrites=false&w=majority'
 
 mongo = PyMongo(app)
 
