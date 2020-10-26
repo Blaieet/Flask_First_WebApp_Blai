@@ -11,20 +11,16 @@ from fooApp.forms import ProductForm
 
 app = Flask(__name__)
 
-
+#My own MongoDB Cluster
 app.config['MONGO_DBNAME'] = 'FlaskWebApp'
 app.config['MONGO_URI'] = 'mongodb+srv://dbUser:ubstyle@clusterblai.olevp.azure.mongodb.net/FlaskWebApp?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
 
-# @app.route('/')
-# def index():
-#   return redirect(url_for('products_list'))
-
 @app.route('/')
 def index():
-  return render_template('index.html')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
@@ -106,10 +102,10 @@ def product_detail(product_id):
 
 @app.route('/products/')
 def products_list():
-  """Provide HTML listing of all Products."""
-  # Query: Get all Products objects, sorted by date.
-  products = mongo.db.products.find()[:]
-  return render_template('product/index.html',products=products)
+    """Provide HTML listing of all Products."""
+    # Query: Get all Products objects, sorted by date.
+    products = mongo.db.products.find()[:]
+    return render_template('product/index.html',products=products)
 
 @app.route('/products/<product_id>/edit/',methods=['GET', 'POST'])
 @login_required
@@ -146,22 +142,20 @@ def product_delete(product_id):
 
 @app.errorhandler(404)
 def error_not_found(error):
-  return render_template('error/not_found.html'), 404
+    return render_template('error/not_found.html'), 404
 
 @app.errorhandler(bson.errors.InvalidId)
 def error_not_found(error):
-  return render_template('error/not_found.html'), 404
+    return render_template('error/not_found.html'), 404
 
 
 app.config['SECRET_KEY'] = 'dcqJQC6nDLEyz3k5' # Create your own.
 app.config['SESSION_PROTECTION'] = 'strong'
 
-
 # Use Flask-Login to track current user in Flask's session.
 login_manager = LoginManager()
 login_manager.setup_app(app)
 login_manager.login_view = 'login'
-
 
 @login_manager.user_loader
 def load_user(user_id):
