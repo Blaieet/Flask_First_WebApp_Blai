@@ -42,6 +42,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\blair\Desktop\Flask_First_WebApp_Blai\fooApp\templates" />
+      <recent name="C:\Users\blair\Desktop\Flask_First_WebApp_Blai\fooApp\static\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,7 +61,7 @@
       <workItem from="1603626516853" duration="17750000" />
       <workItem from="1603707058930" duration="3569000" />
       <workItem from="1603710943332" duration="49000" />
-      <workItem from="1603711306990" duration="1564000" />
+      <workItem from="1603711306990" duration="7835000" />
     </task>
     <servers />
   </component>
@@ -71,9 +77,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.94.1920.1040@0.0.1920.1040" timestamp="1603626383349" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1603639273705">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1603714598110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.94.1920.1040@0.0.1920.1040" timestamp="1603639273705" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.94.1920.1040@0.0.1920.1040" timestamp="1603714598110" />
   </component>
 </project>

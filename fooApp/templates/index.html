@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}Page Title{% endblock title %}
+{% block title %}YKEA{% endblock title %}
 {% block main %}
-  <h2>This is a child template.</h2>
+<style type="text/css">
+  #welcome-section {
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  }
+  .welcome-header {
+  text-align: center;
+  }
+</style>
+
+<body>
+  <div id="welcome-section">
+    <h2 style="text-align: center">Welcome to Ykea</h2>
+    <h2 class="welcome-header">The best furniture website</h2>
+  <div>
+</body>
 {% endblock main %}

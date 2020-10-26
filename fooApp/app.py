@@ -1,24 +1,19 @@
 
-from flask import make_response
-from flask import redirect
-from flask import request, url_for,abort
-from fooApp.forms import ProductForm
 from flask import Flask
+from flask import make_response,redirect,request, url_for,abort,Response, render_template, jsonify
+import bson
 from bson.objectid import ObjectId
 from flask_pymongo import PyMongo
-from flask import Response
-from flask import render_template, jsonify
-import bson
-from flask_login import LoginManager, current_user
-from flask_login import login_user, logout_user,login_required
+from flask_login import LoginManager, current_user, login_user, logout_user,login_required
 from fooApp.forms import LoginForm
 from fooApp.models import User
+from fooApp.forms import ProductForm
 
 app = Flask(__name__)
 
 
 app.config['MONGO_DBNAME'] = 'FlaskWebApp'
-app.config['MONGO_URI'] = 'mongodb+srv://dbUser:ubstyle@clusterblai.olevp.azure.mongodb.net/FlaskWebApp?retryWrites=false&w=majority'
+app.config['MONGO_URI'] = 'mongodb+srv://dbUser:ubstyle@clusterblai.olevp.azure.mongodb.net/FlaskWebApp?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
@@ -31,21 +26,13 @@ mongo = PyMongo(app)
 def index():
   return render_template('index.html')
 
-@app.route('/products/<product_id>/delete/', methods=['DELETE'])
-@login_required
-def product_delete(product_id):
-  """Delete record using HTTP DELETE, respond with JSON."""
-  result = mongo.db.products.delete_one({ "_id": ObjectId(product_id) })
-  if result.deleted_count == 0:
-    # Abort with Not Found, but with simple JSON response.
-    response = jsonify({'status': 'Not Found'})
-    response.status = 404
-    return response
-  return jsonify({'status': 'OK'})
 
 if __name__ == '__main__':
     app.run()
 
+@app.route('/about/')
+def about():
+    return render_template('about.html')
 
 @app.route('/string/')
 def return_string():
@@ -144,6 +131,18 @@ def product_edit(product_id):
         # Success. Send the user back to the detail view.
         return render_template('product/detail.html', product=product)
     return render_template('product/edit.html', form=form)
+
+@app.route('/products/<product_id>/delete/', methods=['DELETE'])
+@login_required
+def product_delete(product_id):
+    """Delete record using HTTP DELETE, respond with JSON."""
+    result = mongo.db.products.delete_one({ "_id": ObjectId(product_id) })
+    if result.deleted_count == 0:
+        # Abort with Not Found, but with simple JSON response.
+        response = jsonify({'status': 'Not Found'})
+        response.status = 404
+        return response
+    return jsonify({'status': 'OK'})
 
 @app.errorhandler(404)
 def error_not_found(error):
