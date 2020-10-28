@@ -113,10 +113,9 @@ def product_edit(product_id):
     product = mongo.db.products.find_one({ "_id": ObjectId(product_id) })
     if product is None:
         abort(404)
-    form = ProductForm(request.form)
-    print(product)
+    #Filling form with "original" data
+    form = ProductForm(request.form,data=product)
     if request.method == 'POST' and form.validate():
-
         mongo.db.products.update_one({"_id":ObjectId(product_id)},
                                      {'$set':
                                             {'name':form.name.data,'description':form.description.data,'price':form.price.data},
